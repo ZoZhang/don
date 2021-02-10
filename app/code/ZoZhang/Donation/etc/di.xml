@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="ZoZhang\Donation\Api\ProductRepositoryInterface" type="ZoZhang\Donation\Model\ProductRepository" />
+    <preference for="ZoZhang\Donation\Api\Data\ProductInterface" type="ZoZhang\Donation\Model\Product" />
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="donation_product_listing_data_source" xsi:type="string">DonationGridProductCollection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="DonationGridProductCollection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">donation_product</argument>
+            <argument name="resourceModel" xsi:type="string">ZoZhang\Donation\Model\ResourceModel\Product\Collection</argument>
+        </arguments>
+    </virtualType>
+</config>
