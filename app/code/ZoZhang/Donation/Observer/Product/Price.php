@@ -32,9 +32,8 @@ class Price implements ObserverInterface
         $item = ($item->getParentItem() ? $item->getParentItem() : $item);
         $price = $product->getAmount();
 
-        $item->setName('ssdddddd');
         $item->setNoDiscount(1);
-        $item->setDescription('ssdddddd');
+        $item->setDescription('donation product');
         $item->setCustomPrice($price);
         $item->setOriginalCustomPrice($price);
         $item->setProductType('donation');
