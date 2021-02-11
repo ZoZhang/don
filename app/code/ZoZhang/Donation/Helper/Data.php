@@ -14,6 +14,7 @@ use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\ScopeInterface;
+use Magento\Framework\Pricing\PriceCurrencyInterface;
 
 /**
  * Class Helper Data
@@ -29,26 +30,54 @@ class Data extends AbstractHelper
     private $_storeManager;
 
     /**
+     * @var
+     */
+    protected $_priceCurrency;
+
+    /**
      * Data constructor.
      * @param Context $context
      * @param StoreManagerInterface $storeManager
      */
     public function __construct(
         Context $context,
-        StoreManagerInterface $storeManager
+        StoreManagerInterface $storeManager,
+        PriceCurrencyInterface $priceCurrency
     ) {
         parent::__construct($context);
 
         $this->_storeManager = $storeManager;
+        $this->_priceCurrency = $priceCurrency;
+    }
+
+    /**
+     * get currency with format
+     * @param $price
+     * @param bool $includeContainer
+     * @return mixed
+     */
+    public function getCurrencyWithFormat($price, $includeContainer = false)
+    {
+        return $this->_priceCurrency->format($price,$includeContainer,2);
+    }
+
+    /**
+     * get round price
+     * @param $price
+     * @return mixed
+     */
+    public function getRoundedPrice($price)
+    {
+        return $this->_priceCurrency->round($price);
     }
 
     /**
      * get currency symbol
      * @return string
      */
-    public function getCurrencySymbol()
+    public function getCurrentCurrencySymbol()
     {
-        return (string) $this->storeManager->getStore()->getCurrentCurrency()->getCurrencySymbol();
+        return $this->_priceCurrency->getCurrencySymbol();
     }
 
     /**

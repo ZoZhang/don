@@ -194,4 +194,5 @@ class Product extends AbstractModel implements ProductInterface, IdentityInterfa
     {
         return $this->setData(self::CREATED_AT, $createdAt);
     }
+
 }

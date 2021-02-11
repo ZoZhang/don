@@ -4,6 +4,10 @@
     <preference for="ZoZhang\Donation\Api\ProductRepositoryInterface" type="ZoZhang\Donation\Model\ProductRepository" />
     <preference for="ZoZhang\Donation\Api\Data\ProductInterface" type="ZoZhang\Donation\Model\Product" />
 
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="donation_product_order_item_additional_options" type="ZoZhang\Donation\Plugin\Order\Item" sortOrder="1" />
+    </type>
+
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">

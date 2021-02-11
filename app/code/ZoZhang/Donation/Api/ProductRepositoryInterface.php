@@ -39,11 +39,11 @@ interface ProductRepositoryInterface
     public function getById($id);
 
     /**
-     * Retrieve Donations matching the specified criteria.
-     * @param SearchCriteriaInterface $searchCriteria
+     * Retrieve Donations product list
      * @throws LocalizedException
+     * @return array
      */
-    public function getList(SearchCriteriaInterface $searchCriteria);
+    public function getList();
 
     /**
      * Delete Donations

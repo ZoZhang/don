@@ -131,44 +131,16 @@ class ProductRepository implements ProductRepositoryInterface
     }
 
     /**
-     * @param SearchCriteriaInterface $criteria
-     * @return \Magento\Framework\Api\SearchResultsInterface
+     * Retrieve Donations product list
+     * @return array
      */
-    public function getList(SearchCriteriaInterface $criteria)
+    public function getList()
     {
-        $searchResults = $this->searchResultsFactory->create();
-        $searchResults->setSearchCriteria($criteria);
         $collection = $this->collectionFactory->create();
-        foreach ($criteria->getFilterGroups() as $filterGroup) {
-            $fields = [];
-            $conditions = [];
-            foreach ($filterGroup->getFilters() as $filter) {
-                $condition = $filter->getConditionType() ? $filter->getConditionType() : 'eq';
-                $fields[] = $filter->getField();
-                $conditions[] = [$condition => $filter->getValue()];
-            }
-            if ($fields) {
-                $collection->addFieldToFilter($fields, $conditions);
-            }
-        }
-        $searchResults->setTotalCount($collection->getSize());
-        $sortOrders = $criteria->getSortOrders();
-        if ($sortOrders) {
-            /** @var SortOrder $sortOrder */
-            foreach ($sortOrders as $sortOrder) {
-                $collection->addOrder(
-                    $sortOrder->getField(),
-                    ($sortOrder->getDirection() == SortOrder::SORT_ASC) ? 'ASC' : 'DESC'
-                );
-            }
-        }
-        $collection->setCurPage($criteria->getCurrentPage());
-        $collection->setPageSize($criteria->getPageSize());
-        $objects = [];
-        foreach ($collection as $objectModel) {
-            $objects[] = $objectModel;
-        }
-        $searchResults->setItems($objects);
-        return $searchResults;
+        $collection->addFieldToSelect(['sku', 'amount', 'title', 'product_id', 'description'])
+            ->setPageSize(10)
+            ->setOrder(ProductInterface::CREATED_AT, 'desc');
+
+        return $collection->getItems();
     }
 }
