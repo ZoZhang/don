@@ -1,5 +1,5 @@
 {
-    "name": "magento-mod-exemple-donation",
+    "name": "zozhang/magento-mod-exemple-donation",
     "description": "exemple donation module",
     "type": "magento2-module",
     "version": "1.0.0",
