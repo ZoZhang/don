@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_cart_product_add_after">
+        <observer name="custom_donation_product_price" instance="ZoZhang\Donation\Observer\Product\Price" />
+    </event>
+    <event name="controller_action_predispatch_checkout_cart_index">
+        <observer name="custom_donation_checkout_product_cart" instance="ZoZhang\Donation\Observer\Checkout\Cart" />
+    </event>
+</config>

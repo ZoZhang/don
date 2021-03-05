@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="donations_tab" translate="label" sortOrder="200">
+            <label>Donations</label>
+        </tab>
+        <section id="zozhang_donations" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Product</label>
+            <tab>donations_tab</tab>
+            <resource>ZoZhang_Donation::config</resource>
+            <group id="product" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <!--Core config path: zozhang_donations/product/enabled-->
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>validate-select</validate>
+                    <comment>Whether to enable this module in the foreground, the module will be displayed on the checkout/cart page</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
