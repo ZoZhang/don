@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
-    <menu>
-        <add id="ZoZhang_Donation::content" title="Donations" module="ZoZhang_Donation" sortOrder="20" resource="ZoZhang_Donation::content"/>
-        <add id="ZoZhang_Donation::product" title="Production" module="ZoZhang_Donation" sortOrder="10" parent="ZoZhang_Donation::content" action="zozhang_donation/product/index" resource="ZoZhang_Donation::product"/>
-        <add id="ZoZhang_Donation::config" title="Configuration" module="ZoZhang_Donation" sortOrder="20" parent="ZoZhang_Donation::content" action="admin/system_config/edit/section/zozhang_donations" resource="ZoZhang_Donation::config"/>
-    </menu>
-</config>
